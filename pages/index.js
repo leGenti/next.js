@@ -25,18 +25,11 @@ export default function Home ({pokemon}){
 Home.getInitialProps = async () => {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=110')
+    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
     const {results} = await res.json()
     const pokemon = results.map((result, index) => {
-        const paddedIndex = () => {
-            return(
-            index < 9 ? (
-                '00' + (index + 1)
-            ) : (
-                '0' + (index + 1)
-            ))
-        }
-        const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedIndex()}.png`
+        const paddedIndex = ("00" + (index + 1)).slice(-3);
+        const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedIndex}.png`
         return {
             ...result,
             image,
