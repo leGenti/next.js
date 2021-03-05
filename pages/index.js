@@ -1,13 +1,17 @@
 
-export default function Home({pokemon}){
+export default function Home ({pokemon}){
     return(
         <ul className="grid grid-cols-6 gap-4">
             {pokemon.map((poke, index) => (
                 <div key={index}>
                     <li>
-                        <img className="w-20 h-20" src={poke.image} alt='pokemon-image'/>
-                        <span>{index + 1}.</span>
-                        {poke.name}
+                        <div className="mx-auto border border-black-700 flex items-center justify-center shadow">
+                            <img className="rounded-tr-md rounded-tl-md h-40 w-40" src={poke.image}/>
+                            <div className="bg-white p-8 rounded-bl-md rounded-br-md">
+                                <span>{index + 1}.</span>
+                                <h2 className="text-gray-700 font-semibold">{poke.name}</h2>
+                            </div>
+                        </div>
                     </li>
                 </div>
             ))}
@@ -26,7 +30,7 @@ Home.getInitialProps = async () => {
     const pokemon = results.map((result, index) => {
         const paddedIndex = () => {
             return(
-            index <=   10 ? (
+            index < 9 ? (
                 '00' + (index + 1)
             ) : (
                 '0' + (index + 1)
@@ -43,3 +47,4 @@ Home.getInitialProps = async () => {
     // will receive `pokemon` as a prop at build time
     return { pokemon: pokemon}
   }
+

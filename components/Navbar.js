@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Navbar = () => {
     return (
-        <nav className="border-b">
+        <nav className="border-b shadow bg-white"> 
             <div className="flex logo ml-10 mt-10 justify-center">
                 <Link href="/"><a><Image src="/Naamloos-3.png" alt="logoimg" width="200" height="70" /></a></Link>
             </div>
